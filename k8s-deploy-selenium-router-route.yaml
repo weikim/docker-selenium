@@ -1,0 +1,71 @@
+# To execute this yml file use this command in your local kubernetes environment oc apply -f k8s-deployment-selenium-router-route.yaml
+# It will create a route named 'selenium-router-route' and it will point at the service 
+# 'selenium-router'.
+
+apiVersion: route.openshift.io/v1
+kind: Route
+metadata:
+  annotations:
+    openshift.io/host.generated: "true"
+  creationTimestamp: "2021-04-28T05:21:04Z"
+  labels:
+    component: selenium-grid-4
+    name: selenium-router
+  managedFields:
+  - apiVersion: route.openshift.io/v1
+    fieldsType: FieldsV1
+    fieldsV1:
+      f:metadata:
+        f:labels:
+          .: {}
+          f:component: {}
+          f:name: {}
+      f:spec:
+        f:port:
+          .: {}
+          f:targetPort: {}
+        f:tls:
+          .: {}
+          f:termination: {}
+        f:to:
+          f:kind: {}
+          f:name: {}
+          f:weight: {}
+        f:wildcardPolicy: {}
+    manager: oc
+    operation: Update
+    time: "2021-04-28T05:21:04Z"
+  - apiVersion: route.openshift.io/v1
+    fieldsType: FieldsV1
+    fieldsV1:
+      f:status:
+        f:ingress: {}
+    manager: openshift-router
+    operation: Update
+    time: "2021-04-28T05:21:05Z"
+  name: selenium-router-route
+  namespace: pa-build
+  resourceVersion: "196314871"
+  selfLink: /apis/route.openshift.io/v1/namespaces/pa-build/routes/selenium-router-route
+  uid: d7065fda-0a8a-4555-878d-c9796732c33f
+spec:
+  host: selenium-router-route-pa-build.apps.ocp-dc8-03.ikeadt.com
+  port:
+    targetPort: 4444
+  tls:
+    termination: edge
+  to:
+    kind: Service
+    name: selenium-router
+    weight: 100
+  wildcardPolicy: None
+status:
+  ingress:
+  - conditions:
+    - lastTransitionTime: "2021-04-28T05:21:05Z"
+      status: "True"
+      type: Admitted
+    host: selenium-router-route-pa-build.apps.ocp-dc8-03.ikeadt.com
+    routerCanonicalHostname: apps.ocp-dc8-03.ikeadt.com
+    routerName: default
+    wildcardPolicy: None
