@@ -37,10 +37,6 @@ IMAGE_NAME_MAP = {
     # Firefox Images
     'NodeFirefox': 'node-firefox',
     'StandaloneFirefox': 'standalone-firefox',
-
-    # Opera Images
-    'NodeOpera': 'node-opera',
-    'StandaloneOpera': 'standalone-opera',
 }
 
 TEST_NAME_MAP = {
@@ -55,10 +51,6 @@ TEST_NAME_MAP = {
     # Firefox Images
     'NodeFirefox': 'FirefoxTests',
     'StandaloneFirefox': 'FirefoxTests',
-
-    # Opera Images
-    'NodeOpera': 'OperaTests',
-    'StandaloneOpera': 'OperaTests',
 }
 
 
@@ -132,6 +124,7 @@ def launch_container(container, **kwargs):
     container_id = client.containers.run("%s/%s:%s" % (NAMESPACE, IMAGE_NAME_MAP[container], VERSION),
                                          detach=True,
                                          environment=environment,
+                                         shm_size="2G",
                                          **kwargs).short_id
     logger.info("%s up and running" % container)
     return container_id

@@ -11,7 +11,7 @@ Prereleases are happening on a regular basis to get early feedback. This means t
 can be currently at a different beta version (e.g. bindings on Beta 2, and Docker images on prerelease Beta 3).
 
 Docker images for Grid 4 come with a handful of tags to simplify its usage, have a look at them in one of 
-our [releases](https://github.com/SeleniumHQ/docker-selenium/releases/tag/4.0.0-beta-3-20210426)
+our [releases](https://github.com/SeleniumHQ/docker-selenium/releases/tag/4.0.0-beta-4-prerelease-20210517)
 
 To get notifications of new prereleases, add yourself as a "Releases only" watcher. 
 
@@ -31,9 +31,9 @@ https://www.selenium.dev/support/
 1. Start a Docker container with Firefox
 
 ``` bash
-$ docker run -d -p 4444:4444 -p 7900:7900 --shm-size 2g selenium/standalone-firefox:4.0.0-beta-3-20210426
+$ docker run -d -p 4444:4444 -p 7900:7900 --shm-size 2g selenium/standalone-firefox:4.0.0-beta-4-prerelease-20210517
 # OR
-$ docker run -d -p 4444:4444 -p 7900:7900 -v /dev/shm:/dev/shm selenium/standalone-firefox:4.0.0-beta-3-20210426
+$ docker run -d -p 4444:4444 -p 7900:7900 -v /dev/shm:/dev/shm selenium/standalone-firefox:4.0.0-beta-4-prerelease-20210517
 ```
 
 2. Point your WebDriver tests to http://localhost:4444 *
@@ -60,22 +60,17 @@ ___
 
 ![Firefox](https://raw.githubusercontent.com/alrra/browser-logos/main/src/firefox/firefox_24x24.png) Firefox 
 ``` bash
-$ docker run -d -p 4444:4444 -v /dev/shm:/dev/shm selenium/standalone-firefox:4.0.0-beta-3-20210426
+$ docker run -d -p 4444:4444 -v /dev/shm:/dev/shm selenium/standalone-firefox:4.0.0-beta-4-prerelease-20210517
 ```
 
 ![Chrome](https://raw.githubusercontent.com/alrra/browser-logos/main/src/chrome/chrome_24x24.png) Chrome 
 ``` bash
-$ docker run -d -p 4444:4444 -v /dev/shm:/dev/shm selenium/standalone-chrome:4.0.0-beta-3-20210426
-```
-
-![Opera](https://raw.githubusercontent.com/alrra/browser-logos/main/src/opera/opera_24x24.png) Opera 
-``` bash
-$ docker run -d -p 4444:4444 -v /dev/shm:/dev/shm selenium/standalone-opera:4.0.0-beta-3-20210426
+$ docker run -d -p 4444:4444 -v /dev/shm:/dev/shm selenium/standalone-chrome:4.0.0-beta-4-prerelease-20210517
 ```
 
 ![Edge](https://raw.githubusercontent.com/alrra/browser-logos/main/src/edge/edge_24x24.png) Microsoft Edge
 ``` bash
-$ docker run -d -p 4444:4444 -v /dev/shm:/dev/shm selenium/standalone-edge:4.0.0-beta-3-20210426
+$ docker run -d -p 4444:4444 -v /dev/shm:/dev/shm selenium/standalone-edge:4.0.0-beta-4-prerelease-20210517
 ```
 
 _Note: Only one Standalone container can run on port_ `4444` _at the same time._
@@ -92,27 +87,22 @@ A Docker [network](https://docs.docker.com/engine/reference/commandline/network_
 
 ``` bash
 $ docker network create grid
-$ docker run -d -p 4442-4444:4442-4444 --net grid --name selenium-hub selenium/hub:4.0.0-beta-3-20210426
+$ docker run -d -p 4442-4444:4442-4444 --net grid --name selenium-hub selenium/hub:4.0.0-beta-4-prerelease-20210517
 $ docker run -d --net grid -e SE_EVENT_BUS_HOST=selenium-hub \
     -e SE_EVENT_BUS_PUBLISH_PORT=4442 \
     -e SE_EVENT_BUS_SUBSCRIBE_PORT=4443 \
     -v /dev/shm:/dev/shm \
-    selenium/node-chrome:4.0.0-beta-3-20210426
+    selenium/node-chrome:4.0.0-beta-4-prerelease-20210517
 $ docker run -d --net grid -e SE_EVENT_BUS_HOST=selenium-hub \
     -e SE_EVENT_BUS_PUBLISH_PORT=4442 \
     -e SE_EVENT_BUS_SUBSCRIBE_PORT=4443 \
     -v /dev/shm:/dev/shm \
-    selenium/node-edge:4.0.0-beta-3-20210426
+    selenium/node-edge:4.0.0-beta-4-prerelease-20210517
 $ docker run -d --net grid -e SE_EVENT_BUS_HOST=selenium-hub \
     -e SE_EVENT_BUS_PUBLISH_PORT=4442 \
     -e SE_EVENT_BUS_SUBSCRIBE_PORT=4443 \
     -v /dev/shm:/dev/shm \
-    selenium/node-firefox:4.0.0-beta-3-20210426
-$ docker run -d --net grid -e SE_EVENT_BUS_HOST=selenium-hub \
-    -e SE_EVENT_BUS_PUBLISH_PORT=4442 \
-    -e SE_EVENT_BUS_SUBSCRIBE_PORT=4443 \
-    -v /dev/shm:/dev/shm \
-    selenium/node-opera:4.0.0-beta-3-20210426
+    selenium/node-firefox:4.0.0-beta-4-prerelease-20210517
 ```
 
 When you are done using the Grid, and the containers have exited, the network can be removed with the following command:
@@ -128,7 +118,7 @@ communicate properly.
 
 Hub - Machine/VM 1
 ``` bash
-$ docker run -d -p 4442-4444:4442-4444 --name selenium-hub selenium/hub:4.0.0-beta-3-20210426
+$ docker run -d -p 4442-4444:4442-4444 --name selenium-hub selenium/hub:4.0.0-beta-4-prerelease-20210517
 ```
 
 Node Chrome - Machine/VM 2
@@ -139,7 +129,7 @@ $ docker run -d -p 5555:5555
     -e SE_EVENT_BUS_SUBSCRIBE_PORT=4443 \
     -e SE_NODE_HOST=<ip-from-machine-2> \
     -v /dev/shm:/dev/shm \
-    selenium/node-chrome:4.0.0-beta-3-20210426
+    selenium/node-chrome:4.0.0-beta-4-prerelease-20210517
 ```
 
 Node Edge - Machine/VM 3
@@ -150,7 +140,7 @@ $ docker run -d -p 5555:5555
     -e SE_EVENT_BUS_SUBSCRIBE_PORT=4443 \
     -e SE_NODE_HOST=<ip-from-machine-3> \
     -v /dev/shm:/dev/shm \
-    selenium/node-edge:4.0.0-beta-3-20210426
+    selenium/node-edge:4.0.0-beta-4-prerelease-20210517
 ```
 
 Node Firefox - Machine/VM 4
@@ -161,18 +151,7 @@ $ docker run -d -p 5555:5555
     -e SE_EVENT_BUS_SUBSCRIBE_PORT=4443 \
     -e SE_NODE_HOST=<ip-from-machine-4> \
     -v /dev/shm:/dev/shm \
-    selenium/node-firefox:4.0.0-beta-3-20210426
-```
-
-Node Opera - Machine/VM 5
-``` bash
-$ docker run -d -p 5555:5555 
-    -e SE_EVENT_BUS_HOST=<ip-from-machine-1> \
-    -e SE_EVENT_BUS_PUBLISH_PORT=4442 \
-    -e SE_EVENT_BUS_SUBSCRIBE_PORT=4443 \
-    -e SE_NODE_HOST=<ip-from-machine-5> \
-    -v /dev/shm:/dev/shm \
-    selenium/node-opera:4.0.0-beta-3-20210426
+    selenium/node-firefox:4.0.0-beta-4-prerelease-20210517
 ```
 
 #### Docker Compose
@@ -204,7 +183,7 @@ ___
 
 ## Video recording ![BETA](https://img.shields.io/badge/beta!-blue?style=for-the-badge)
 
-Tests execution can be recorded by using the `selenium/video:ffmpeg-4.3.1-20210426`
+Tests execution can be recorded by using the `selenium/video:ffmpeg-4.3.1-20210517`
 Docker image. One container is needed per each container where a browser is running. This means if you are
 running 5 Nodes/Standalone containers, you will need 5 video containers, the mapping is 1-1.
 
@@ -230,8 +209,8 @@ This example shows how to start the containers manually:
 
 ``` bash
 $ docker network create grid
-$ docker run -d -p 4444:4444 -p 6900:5900 --net grid --name selenium -v /dev/shm:/dev/shm selenium/standalone-chrome:4.0.0-beta-3-20210426
-$ docker run -d --net grid --name video -v /tmp/videos:/videos selenium/video:ffmpeg-4.3.1-20210426
+$ docker run -d -p 4444:4444 -p 6900:5900 --net grid --name selenium -v /dev/shm:/dev/shm selenium/standalone-chrome:4.0.0-beta-4-prerelease-20210517
+$ docker run -d --net grid --name video -v /tmp/videos:/videos selenium/video:ffmpeg-4.3.1-20210517
 # Run your tests
 $ docker stop video && docker rm video
 $ docker stop selenium && docker rm selenium
@@ -262,10 +241,9 @@ You can save this file locally and name it, for example, `config.toml`.
 # Configs have a mapping between the Docker image to use and the capabilities that need to be matched to
 # start a container with the given image.
 configs = [
-    "selenium/standalone-firefox:4.0.0-beta-3-20210426", "{\"browserName\": \"firefox\"}",
-    "selenium/standalone-chrome:4.0.0-beta-3-20210426", "{\"browserName\": \"chrome\"}",
-    "selenium/standalone-opera:4.0.0-beta-3-20210426", "{\"browserName\": \"operablink\"}",
-    "selenium/standalone-edge:4.0.0-beta-3-20210426", "{\"browserName\": \"msedge\"}"
+    "selenium/standalone-firefox:4.0.0-beta-4-prerelease-20210517", "{\"browserName\": \"firefox\"}",
+    "selenium/standalone-chrome:4.0.0-beta-4-prerelease-20210517", "{\"browserName\": \"chrome\"}",
+    "selenium/standalone-edge:4.0.0-beta-4-prerelease-20210517", "{\"browserName\": \"MicrosoftEdge\"}"
     ]
 
 # URL for connecting to the docker daemon
@@ -275,7 +253,7 @@ configs = [
 # socat -4 TCP-LISTEN:2375,fork UNIX-CONNECT:/var/run/docker.sock
 url = "http://host.docker.internal:2375"
 # Docker imagee used for video recording
-video-image = "selenium/video:ffmpeg-4.3.1-20210426"
+video-image = "selenium/video:ffmpeg-4.3.1-20210517"
 
 # Uncomment the following section if you are running the node on a separate VM
 # Fill out the placeholders with appropriate values
@@ -292,13 +270,13 @@ virtual machines.
 
 ``` bash
 $ docker network create grid
-$ docker run -d -p 4442-4444:4442-4444 --net grid --name selenium-hub selenium/hub:4.0.0-beta-3-20210426
+$ docker run -d -p 4442-4444:4442-4444 --net grid --name selenium-hub selenium/hub:4.0.0-beta-4-prerelease-20210517
 $ docker run -d --net grid -e SE_EVENT_BUS_HOST=selenium-hub \
     -e SE_EVENT_BUS_PUBLISH_PORT=4442 \
     -e SE_EVENT_BUS_SUBSCRIBE_PORT=4443 \
     -v ${PWD}/config.toml:/opt/bin/config.toml \
     -v /path/on/your/host/machine:/opt/selenium/assets \
-    selenium/node-docker:4.0.0-beta-3-20210426
+    selenium/node-docker:4.0.0-beta-4-prerelease-20210517
 ```
 
 To have the assets saved on your host, please mount your host path to `/opt/selenium/assets`.
@@ -313,10 +291,10 @@ $ docker network rm grid
 ### Execution with Standalone roles
 
 ```bash
-docker run --rm -ti --name selenium-docker -p 4444:4444 \
+docker run --rm --name selenium-docker -p 4444:4444 \
     -v ${PWD}/config.toml:/opt/bin/config.toml \
     -v /path/on/your/host/machine:/opt/selenium/assets \
-    selenium/standalone-docker:4.0.0-beta-3-20210426
+    selenium/standalone-docker:4.0.0-beta-4-prerelease-20210517
 ```
 
 To have the assets saved on your host, please mount your host path to `/opt/selenium/assets`.
@@ -374,7 +352,7 @@ ___
 You can pass `SE_OPTS` variable with additional commandline parameters for starting a hub or a node.
 
 ``` bash
-$ docker run -d -p 4444:4444 -e SE_OPTS="--log-level FINE" --name selenium-hub selenium/hub:4.0.0-beta-3-20210426
+$ docker run -d -p 4444:4444 -e SE_OPTS="--log-level FINE" --name selenium-hub selenium/hub:4.0.0-beta-4-prerelease-20210517
 ```
 
 ### JAVA_OPTS Java Environment Options
@@ -382,7 +360,7 @@ $ docker run -d -p 4444:4444 -e SE_OPTS="--log-level FINE" --name selenium-hub s
 You can pass `JAVA_OPTS` environment variable to java process.
 
 ``` bash
-$ docker run -d -p 4444:4444 -e JAVA_OPTS=-Xmx512m --name selenium-hub selenium/hub:4.0.0-beta-3-20210426
+$ docker run -d -p 4444:4444 -e JAVA_OPTS=-Xmx512m --name selenium-hub selenium/hub:4.0.0-beta-4-prerelease-20210517
 ```
 
 ### Node configuration options
@@ -398,7 +376,7 @@ variables.
 Here is an example with the default values of these environment variables:
 
 ```bash
-$ docker run -d --e SE_EVENT_BUS_HOST=<event_bus_ip|event_bus_name> -e SE_EVENT_BUS_PUBLISH_PORT=4442 -e SE_EVENT_BUS_SUBSCRIBE_PORT=4443 -v /dev/shm:/dev/shm selenium/node-chrome:4.0.0-beta-3-20210426
+$ docker run -d --e SE_EVENT_BUS_HOST=<event_bus_ip|event_bus_name> -e SE_EVENT_BUS_PUBLISH_PORT=4442 -e SE_EVENT_BUS_SUBSCRIBE_PORT=4443 -v /dev/shm:/dev/shm selenium/node-chrome:4.0.0-beta-4-prerelease-20210517
 ```
 
 ### Setting Screen Resolution
@@ -437,7 +415,6 @@ captured in the same video.
 
 [Firefox](https://developer.mozilla.org/en-US/docs/Mozilla/Firefox/Headless_mode), 
 [Chrome](https://developers.google.com/web/updates/2017/04/headless-chrome), 
-[Opera](https://forums.opera.com/topic/20375/opera-cli-switches-and-headless) and Edge support running tests in the headless mode.
 When using headless mode, there's no need for the [Xvfb](https://en.wikipedia.org/wiki/Xvfb) server to be started.
 
 To avoid starting the server you can set the `START_XVFB` environment variable to `false` 
@@ -535,11 +512,10 @@ $ docker network create grid
 $ docker run -d -p 4444:4444 --net grid --name selenium-hub \
     --health-cmd='/opt/bin/check-grid.sh --host 0.0.0.0 --port 4444' \
     --health-interval=15s --health-timeout=30s --health-retries=5 \
-    selenium/hub:4.0.0-beta-3-20210426
-$ docker run -d --net grid -e HUB_HOST=selenium-hub -v /dev/shm:/dev/shm selenium/node-chrome:4.0.0-beta-3-20210426
-$ docker run -d --net grid -e HUB_HOST=selenium-hub -v /dev/shm:/dev/shm selenium/node-edge:4.0.0-beta-3-20210426
-$ docker run -d --net grid -e HUB_HOST=selenium-hub -v /dev/shm:/dev/shm selenium/node-firefox:4.0.0-beta-3-20210426
-$ docker run -d --net grid -e HUB_HOST=selenium-hub -v /dev/shm:/dev/shm selenium/node-opera:4.0.0-beta-3-20210426
+    selenium/hub:4.0.0-beta-4-prerelease-20210517
+$ docker run -d --net grid -e HUB_HOST=selenium-hub -v /dev/shm:/dev/shm selenium/node-chrome:4.0.0-beta-4-prerelease-20210517
+$ docker run -d --net grid -e HUB_HOST=selenium-hub -v /dev/shm:/dev/shm selenium/node-edge:4.0.0-beta-4-prerelease-20210517
+$ docker run -d --net grid -e HUB_HOST=selenium-hub -v /dev/shm:/dev/shm selenium/node-firefox:4.0.0-beta-4-prerelease-20210517
 ```
 **Note:** The `\` line delimiter won't work on Windows based terminals, try either `^` or a backtick.
 
@@ -604,27 +580,24 @@ The internal 5900 port remains the same because that is the configured port for 
 
 Here is an example with the standalone images, the same concept applies to the node images.
 ``` bash
-$ docker run -d -p 4444:4444 -p 5900:5900 -v /dev/shm:/dev/shm selenium/standalone-chrome:4.0.0-beta-3-20210426
-$ docker run -d -p 4444:4444 -p 5901:5900 -v /dev/shm:/dev/shm selenium/standalone-edge:4.0.0-beta-3-20210426
-$ docker run -d -p 4445:4444 -p 5902:5900 -v /dev/shm:/dev/shm selenium/standalone-firefox:4.0.0-beta-3-20210426
-$ docker run -d -p 4446:4444 -p 5903:5900 -v /dev/shm:/dev/shm selenium/standalone-opera:4.0.0-beta-3-20210426
+$ docker run -d -p 4444:4444 -p 5900:5900 -v /dev/shm:/dev/shm selenium/standalone-chrome:4.0.0-beta-4-prerelease-20210517
+$ docker run -d -p 4444:4444 -p 5901:5900 -v /dev/shm:/dev/shm selenium/standalone-edge:4.0.0-beta-4-prerelease-20210517
+$ docker run -d -p 4445:4444 -p 5902:5900 -v /dev/shm:/dev/shm selenium/standalone-firefox:4.0.0-beta-4-prerelease-20210517
 ```
 
 Then, you would use in your VNC client:
 - Port 5900 to connect to the Chrome container
 - Port 5901 to connect to the Edge container
 - Port 5902 to connect to the Firefox container
-- Port 5903 to connect to the Opera container
 
 If you get a prompt asking for a password, it is: `secret`. If you wish to change this, you should either change 
 it in the `/NodeBase/Dockerfile` and build the images yourself, or you can define a Docker image that derives from 
 the posted ones which reconfigures it:
 
 ``` dockerfile
-#FROM selenium/node-chrome:4.0.0-beta-3-20210426
-#FROM selenium/node-edge:4.0.0-beta-3-20210426
-#FROM selenium/node-firefox:4.0.0-beta-3-20210426
-#FROM selenium/node-opera:4.0.0-beta-3-20210426
+#FROM selenium/node-chrome:4.0.0-beta-4-prerelease-20210517
+#FROM selenium/node-edge:4.0.0-beta-4-prerelease-20210517
+#FROM selenium/node-firefox:4.0.0-beta-4-prerelease-20210517
 #Choose the FROM statement that works for you.
 
 RUN x11vnc -storepasswd <your-password-here> /home/seluser/.vnc/passwd
@@ -642,17 +615,15 @@ Similarly to the previous section, feel free to map port 7900 to any free extern
 
 Here is an example with the standalone images, the same concept applies to the node images.
 ``` bash
-$ docker run -d -p 4444:4444 -p 7900:7900 -v /dev/shm:/dev/shm selenium/standalone-chrome:4.0.0-beta-3-20210426
-$ docker run -d -p 4444:4444 -p 7901:7900 -v /dev/shm:/dev/shm selenium/standalone-edge:4.0.0-beta-3-20210426
-$ docker run -d -p 4445:4444 -p 7902:7900 -v /dev/shm:/dev/shm selenium/standalone-firefox:4.0.0-beta-3-20210426
-$ docker run -d -p 4446:4444 -p 7903:7900 -v /dev/shm:/dev/shm selenium/standalone-opera:4.0.0-beta-3-20210426
+$ docker run -d -p 4444:4444 -p 7900:7900 -v /dev/shm:/dev/shm selenium/standalone-chrome:4.0.0-beta-4-prerelease-20210517
+$ docker run -d -p 4444:4444 -p 7901:7900 -v /dev/shm:/dev/shm selenium/standalone-edge:4.0.0-beta-4-prerelease-20210517
+$ docker run -d -p 4445:4444 -p 7902:7900 -v /dev/shm:/dev/shm selenium/standalone-firefox:4.0.0-beta-4-prerelease-20210517
 ```
 
 Then, you would use in your browser:
 - http://localhost:7900/ to connect to the Chrome container
 - http://localhost:7901/ to connect to the Edge container
 - http://localhost:7902/ to connect to the Firefox container
-- http://localhost:7903/ to the Opera container
 
 If you get a prompt asking for a password, it is: `secret`.
 
@@ -690,4 +661,4 @@ or
 `Message: unknown error: Chrome failed to start: exited abnormally`
 
 The reason _might_ be that you've set the `START_XVFB` environment variable to "false", but forgot to 
-actually run Firefox, Chrome or Opera in the headless mode.
+actually run Firefox, Chrome or Edge in headless mode.
