@@ -7,9 +7,8 @@ version: '3.7'
 
 services:
   chrome:
-    image: selenium/node-chrome:4.0.0-beta-4-20210608
-    volumes:
-      - /dev/shm:/dev/shm
+    image: selenium/node-chrome:4.1.0-20211123
+    shm_size: 2gb
     environment:
       - SE_EVENT_BUS_HOST=selenium-hub
       - SE_EVENT_BUS_PUBLISH_PORT=4442
@@ -19,9 +18,8 @@ services:
     entrypoint: bash -c 'SE_OPTS="--host $$HOSTNAME" /opt/bin/entry_point.sh'
 
   edge:
-    image: selenium/node-edge:4.0.0-beta-4-20210608
-    volumes:
-      - /dev/shm:/dev/shm
+    image: selenium/node-edge:4.1.0-20211123
+    shm_size: 2gb
     environment:
       - SE_EVENT_BUS_HOST=selenium-hub
       - SE_EVENT_BUS_PUBLISH_PORT=4442
@@ -31,9 +29,8 @@ services:
     entrypoint: bash -c 'SE_OPTS="--host $$HOSTNAME" /opt/bin/entry_point.sh'
 
   firefox:
-    image: selenium/node-firefox:4.0.0-beta-4-20210608
-    volumes:
-      - /dev/shm:/dev/shm
+    image: selenium/node-firefox:4.1.0-20211123
+    shm_size: 2gb
     environment:
       - SE_EVENT_BUS_HOST=selenium-hub
       - SE_EVENT_BUS_PUBLISH_PORT=4442
@@ -43,7 +40,7 @@ services:
     entrypoint: bash -c 'SE_OPTS="--host $$HOSTNAME" /opt/bin/entry_point.sh'
 
   selenium-hub:
-    image: selenium/hub:4.0.0-beta-4-20210608
+    image: selenium/hub:4.1.0-20211123
     ports:
       - "4442:4442"
       - "4443:4443"

@@ -2,7 +2,7 @@
 # NOTE: DO *NOT* EDIT THIS FILE.  IT IS GENERATED.
 # PLEASE UPDATE Dockerfile.txt INSTEAD OF THIS FILE
 # !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
-FROM selenium/base:4.0.0-beta-4-20210608
+FROM selenium/base:4.1.0-20211123
 LABEL authors=SeleniumHQ
 
 USER root
@@ -105,7 +105,13 @@ RUN  wget -nv -O noVNC.zip \
       "https://github.com/novnc/websockify/archive/${WEBSOCKIFY_SHA}.zip" \
   && unzip -x websockify.zip \
   && rm websockify.zip \
+  && rm -rf websockify-${WEBSOCKIFY_SHA}/tests \
   && mv websockify-${WEBSOCKIFY_SHA} /opt/bin/noVNC/utils/websockify
+
+#=========================================================================================================================================
+# Run this command for executable file permissions for /dev/shm when this is a "child" container running in Docker Desktop and WSL2 distro
+#=========================================================================================================================================
+RUN chmod +x /dev/shm
 
 #===================================================
 # Run the following commands as non-privileged user
@@ -162,6 +168,10 @@ ENV SCREEN_DPI 96
 ENV DISPLAY :99.0
 ENV DISPLAY_NUM 99
 ENV START_XVFB true
+ENV START_NO_VNC true
+# Path to the Configfile
+ENV CONFIG_FILE=/opt/selenium/config.toml
+ENV GENERATE_CONFIG true
 
 #========================
 # Selenium Configuration
